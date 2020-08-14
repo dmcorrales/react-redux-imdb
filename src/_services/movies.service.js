@@ -4,8 +4,7 @@ import * as config from '../config';
 class MovieService {
 
     static getAll(page) {
-        this.path = 'trending/all/day'; //Default's query by popularity
-        console.log()
+        this.path = 'trending/movies/day'; //Default's query by popularity
         return axios.get(`${config.HOST_URL}/${config.API_VERSION}/${this.path}?page=${page}&api_key=${config.API_KEY}`);
     }
 
@@ -15,7 +14,6 @@ class MovieService {
     }
 
     static findById(id, type) {
-        console.log(type)
         this.path = `${type}/${id}`; 
         return axios.get(`${config.HOST_URL}/${config.API_VERSION}/${this.path}?api_key=${config.API_KEY}&language=es-ES`);
     }

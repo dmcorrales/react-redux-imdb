@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageHeader, Tabs, Radio, Card, Col, Row, Statistic, Tag, Collapse } from 'antd';
-import createBrowserHistory from 'history/createBrowserHistory';
+import {createBrowserHistory } from 'history';
 const { TabPane } = Tabs;
 const { Panel } = Collapse;
 
@@ -8,7 +8,6 @@ const history = createBrowserHistory({ forceRefresh: true });
 
 function Tv(props) {
     const { movie, season } = props;
-    console.log(movie)
 
     return (
 

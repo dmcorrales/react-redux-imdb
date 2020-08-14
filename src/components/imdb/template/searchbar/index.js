@@ -4,12 +4,12 @@ import SearchBar from './searchbar';
 import findByName from '../../../../actions/filteringMovies';
 import updatePagination from '../../../../actions/updatePagination';
 import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker } from 'antd';
+import { useLocation } from 'react-router-dom'
 
 
 class SearchComponent extends React.Component {
 
     state = { visible: false };
-
     showDrawer = () => {
         this.setState({
             visible: true,
@@ -22,24 +22,22 @@ class SearchComponent extends React.Component {
         });
     };
 
-    componentDidMount() {
-
-    }
 
     handleSubmit = (formValues, next) => {
         const { findByName, updatePagination } = this.props;
         let page = 1;
-
         updatePagination(page);
-        findByName(formValues.filter,page,formValues.type);
+        findByName(formValues.filter, page, formValues.type);
     }
 
     render() {
         return (
             <>
-                <Button type="primary" onClick={this.showDrawer}>
-                    FILTRAR
+                {this.props.path == "/" ?
+                    <Button type="primary" onClick={this.showDrawer}>
+                        FILTRAR
                 </Button>
+                    : <></>}
 
                 <Drawer
                     title="Búsqueda de tv o películas"

@@ -1,13 +1,11 @@
 import React from 'react';
 import { PageHeader, Button, Descriptions } from 'antd';
 import { Card, Col, Row, Statistic, Tag } from 'antd';
-import createBrowserHistory from 'history/createBrowserHistory';
-const history = createBrowserHistory({forceRefresh:true});
+import { createBrowserHistory } from 'history';
+const history = createBrowserHistory({ forceRefresh: true });
 
 function Movie(props) {
-    const { movie} = props;
-    console.log(movie)
-    
+    const { movie } = props;
     return (
 
         <div className="site-page-header-ghost-wrapper">
@@ -37,27 +35,27 @@ function Movie(props) {
                 <div className="site-card-wrapper">
                     <Row gutter={16}>
                         <Col span={8}>
-                            <Card title={movie.original_title + " (" + movie.release_date + ")" }  bordered={false}>
-                                <img alt="example" width="260" height="350"  src={`https://image.tmdb.org/t/p/w220_and_h330_face/${movie.poster_path}`}  />
+                            <Card title={movie.original_title + " (" + movie.release_date + ")"} bordered={false}>
+                                <img alt="example" width="260" height="350" src={`https://image.tmdb.org/t/p/w220_and_h330_face/${movie.poster_path}`} />
                                 <br /><br />
-                                {movie.genres.map(function(item, i){
-                                return <Tag>{item.name}</Tag>;
+                                {movie.genres.map(function (item, i) {
+                                    return <Tag>{item.name}</Tag>;
                                 })}
 
                             </Card>
                         </Col>
                         <Col span={14}>
                             <Card title="Descripción" bordered={false}>
-                               {movie.overview}
-                        </Card>
+                                {movie.overview}
+                            </Card>
                         </Col>
                     </Row>
 
                     <Row gutter={16}>
                         <Col span={24}>
                             <Card title="Compañías de producción" bordered={false}>
-                                {movie.production_companies.map(function(item, i){
-                                return <li>{item.name}</li>;
+                                {movie.production_companies.map(function (item, i) {
+                                    return <li>{item.name}</li>;
                                 })}
                             </Card>
                         </Col>
@@ -66,8 +64,8 @@ function Movie(props) {
                     <Row gutter={16}>
                         <Col span={24}>
                             <Card title="Países de producción" bordered={false}>
-                                {movie.production_countries.map(function(item, i){
-                                return <li>{item.name}</li>;
+                                {movie.production_countries.map(function (item, i) {
+                                    return <li>{item.name}</li>;
                                 })}
                             </Card>
                         </Col>
