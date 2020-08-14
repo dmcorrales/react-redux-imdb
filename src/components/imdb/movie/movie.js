@@ -2,7 +2,6 @@ import React from 'react';
 import { PageHeader, Button, Descriptions } from 'antd';
 import { Card, Col, Row, Statistic, Tag } from 'antd';
 import createBrowserHistory from 'history/createBrowserHistory';
-
 const history = createBrowserHistory({forceRefresh:true});
 
 function Movie(props) {

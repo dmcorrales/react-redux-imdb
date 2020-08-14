@@ -18,7 +18,6 @@ const reducer = (state = defaultState, action) => {
 
         case FILTER_MOVIES_SUCCESS:{
             let list = [];
-            console.log("xd"+state.page)
             if(state.page == 1){
                 list = action.payload.data.results;
             }else{

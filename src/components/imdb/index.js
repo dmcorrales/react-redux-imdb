@@ -1,6 +1,8 @@
 import React from 'react';
 import LandingComponent from './landing';
 import MovieComponent from './movie';
+import TvComponent from './tv';
+
 import SearchComponent from './template/searchbar';
 import { Layout, Menu, Breadcrumb} from 'antd';
 import {Route} from 'react-router-dom';
@@ -23,6 +25,7 @@ function ImdbComponent(props){
             <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
                  <Route exact path="/" component={LandingComponent} />
                  <Route exact path="/movie/:id" component={MovieComponent} />
+                 <Route exact path="/tv/:id" component={TvComponent} />
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Hecho con ❤️ por danieldmc123@hotmail.com</Footer>

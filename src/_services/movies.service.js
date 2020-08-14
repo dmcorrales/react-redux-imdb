@@ -14,8 +14,14 @@ class MovieService {
         return axios.get(`${config.HOST_URL}/${config.API_VERSION}/${this.path}?api_key=${config.API_KEY}&query=${filter}&page=${page}`);
     }
 
-    static findById(id) {
-        this.path = `movie/${id}`; 
+    static findById(id, type) {
+        console.log(type)
+        this.path = `${type}/${id}`; 
+        return axios.get(`${config.HOST_URL}/${config.API_VERSION}/${this.path}?api_key=${config.API_KEY}&language=es-ES`);
+    }
+
+    static getSeasonById(tv_id, season_number) {
+        this.path = `tv/${tv_id}/season/${season_number}`; 
         return axios.get(`${config.HOST_URL}/${config.API_VERSION}/${this.path}?api_key=${config.API_KEY}&language=es-ES`);
     }
 
