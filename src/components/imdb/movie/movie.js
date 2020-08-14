@@ -1,16 +1,20 @@
 import React from 'react';
 import { PageHeader, Button, Descriptions } from 'antd';
 import { Card, Col, Row, Statistic, Tag } from 'antd';
+import createBrowserHistory from 'history/createBrowserHistory';
+
+const history = createBrowserHistory({forceRefresh:true});
 
 function Movie(props) {
     const { movie} = props;
-    console.log(movie);
+    console.log(movie)
+    
     return (
 
         <div className="site-page-header-ghost-wrapper">
             <PageHeader
                 ghost={false}
-                onBack={() => window.history.back()}
+                onBack={() => history.push("/")}
                 title="Volver"
                 subTitle={""}
                 extra={[

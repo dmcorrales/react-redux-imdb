@@ -1,13 +1,16 @@
 import React from 'react';
 import { Card, Rate } from 'antd';
+import { withRouter } from "react-router-dom";
+import createBrowserHistory from 'history/createBrowserHistory';
 const { Meta } = Card;
+const history = createBrowserHistory({forceRefresh:true});
 
 function CardComponent(props){
     const {data} = props;
     return(
     <div style = {{width: 200}} >
         <Card
-            onClick={() => alert("K")}
+            onClick={() => history.push("/movie/"+data.id)}
             hoverable
             style={{ width: 240 }}
             cover={
@@ -26,4 +29,4 @@ function CardComponent(props){
     </div>
     );
 }
-export default CardComponent;
+export default withRouter(CardComponent);

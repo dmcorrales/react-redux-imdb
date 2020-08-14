@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Movie from './movie';
 import {connect} from 'react-redux';
 import findById from '../../../actions/findMovieById';
@@ -12,6 +12,7 @@ class MovieComponent extends React.Component {
     }
 
     render() {
+
         const { movies } = this.props;
 
         return (
