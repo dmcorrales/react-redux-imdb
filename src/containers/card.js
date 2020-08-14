@@ -7,6 +7,7 @@ function CardComponent(props){
     return(
     <div style = {{width: 200}} >
         <Card
+            onClick={() => alert("K")}
             hoverable
             style={{ width: 240 }}
             cover={
@@ -20,7 +21,7 @@ function CardComponent(props){
                     </div>
                 </>
             }>
-            <Meta title={data.title ? data.title : data.name} alt={data.original_title} description="www.instagram.com" />
+            <Meta title={data.title ? data.title : data.name} alt={data.original_title} />
         </Card>
     </div>
     );

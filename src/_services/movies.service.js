@@ -10,11 +10,15 @@ class MovieService {
     }
 
     static findByName(filter, page, type) {
-        console.log("llegué"+page)
         this.path = `search/${type}`; 
-        console.log(`${config.HOST_URL}/${config.API_VERSION}/${this.path}?api_key=${config.API_KEY}&query=${filter}&page=${page}`)
         return axios.get(`${config.HOST_URL}/${config.API_VERSION}/${this.path}?api_key=${config.API_KEY}&query=${filter}&page=${page}`);
     }
+
+    static findById(id) {
+        this.path = `movie/${id}`; 
+        return axios.get(`${config.HOST_URL}/${config.API_VERSION}/${this.path}?api_key=${config.API_KEY}&language=es-ES`);
+    }
+
 }
 
 export default MovieService;
