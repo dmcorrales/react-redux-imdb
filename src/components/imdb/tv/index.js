@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Tv from './tv';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import findById from '../../../actions/findMovieById';
 import getSeasons from '../../../actions/getSeasons';
 
@@ -11,21 +11,20 @@ class TvComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          mode: 'top',
+            mode: 'top',
         };
-      }
+    }
 
-      handleModeChange = e => {
+    handleModeChange = e => {
         const mode = e.target.value;
         this.setState({ mode });
-      };
-    
+    };
 
-    componentDidMount(){
-        const { findById, getSeasons } = this.props; 
+
+    componentDidMount() {
+        const { findById, getSeasons } = this.props;
         findById(this.props.match.params.id, 'tv');
-
-        getSeasons(this.props.match.params.id,0)
+        getSeasons(this.props.match.params.id, 0)
     }
 
     render() {
@@ -34,7 +33,7 @@ class TvComponent extends React.Component {
         const { mode } = this.state;
         return (
             <>
-            {movies.isLoading ? <Skeleton /> : <Tv mode={mode}  handleModeChange={this.handleModeChange}  season={season} getSeasons={getSeasons} movie={movies.results.data}></Tv>}
+                {movies.isLoading ? <Skeleton /> : <Tv mode={mode} handleModeChange={this.handleModeChange} season={season} getSeasons={getSeasons} movie={movies.results.data}></Tv>}
             </>
         );
     }

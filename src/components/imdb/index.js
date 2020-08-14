@@ -4,7 +4,7 @@ import MovieComponent from './movie';
 import TvComponent from './tv';
 
 import SearchComponent from './template/searchbar';
-import { Layout, Menu, Breadcrumb} from 'antd';
+import { Layout, Breadcrumb} from 'antd';
 import {Route} from 'react-router-dom';
 
 const { Header, Content, Footer } = Layout;
@@ -28,7 +28,7 @@ function ImdbComponent(props){
                  <Route exact path="/tv/:id" component={TvComponent} />
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Hecho con ❤️ por danieldmc123@hotmail.com</Footer>
+          <Footer style={{ textAlign: 'center' }}>Hecho con ❤️ por Daniel Corrales - danieldmc123@hotmail.com</Footer>
         </Layout>
     );
 }

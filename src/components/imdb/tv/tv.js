@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageHeader, Button, Descriptions, Tabs, Radio, Card, Col, Row, Statistic, Tag, Collapse } from 'antd';
+import { PageHeader, Tabs, Radio, Card, Col, Row, Statistic, Tag, Collapse } from 'antd';
 import createBrowserHistory from 'history/createBrowserHistory';
 const { TabPane } = Tabs;
 const { Panel } = Collapse;
@@ -61,7 +61,7 @@ function Tv(props) {
                                         <Radio.Button value="top">Horizontal</Radio.Button>
                                         <Radio.Button value="left">Vertical</Radio.Button>
                                     </Radio.Group>
-                                    <Tabs onTabClick={(e) => props.getSeasons(movie.id, parseInt(e) + 1)} defaultActiveKey="0" tabPosition={props.mode}>
+                                    <Tabs onTabClick={(e) => props.getSeasons(movie.id, parseInt(e) + 1)}  defaultActiveKey="0" tabPosition={props.mode}>
                                         {movie.seasons.map(function (item, i) {
                                             return (
                                                 <TabPane tab={`${item.name}`} key={i}>

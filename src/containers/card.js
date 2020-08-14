@@ -7,10 +7,11 @@ const history = createBrowserHistory({forceRefresh:true});
 
 function CardComponent(props){
     const {data} = props;
+    console.log(data)
     return(
     <div style = {{width: 200}} >
         <Card
-            onClick={() => history.push("/movie/"+data.id)}
+            onClick={() => history.push((data.media_type==undefined ? "tv" : "movie" )  +"/"+data.id)}
             hoverable
             style={{ width: 240 }}
             cover={
