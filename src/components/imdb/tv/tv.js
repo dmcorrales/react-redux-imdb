@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageHeader, Tabs, Radio, Card, Col, Row, Statistic, Tag, Collapse } from 'antd';
+import { PageHeader, Tabs, Radio, Card, Col, Row, Statistic, Tag, Collapse, Rate } from 'antd';
 import { createBrowserHistory } from 'history';
 const { TabPane } = Tabs;
 const { Panel } = Collapse;
@@ -68,26 +68,28 @@ function Tv(props) {
                                         {movie.seasons.map(function (item, i) {
                                             return (
                                                 <TabPane tab={`${item.name}`} key={i}>
-                                                    <Collapse accordion>
-
-
+                                                    <Collapse onChange={(z) => props.getSeasonEpisodes(movie.id, parseInt(i)+1, parseInt(z)+1 )} accordion>
                                                         {season.isLoading ? <p>No data found.</p> :
                                                             season.results.data.episodes.map(function (item, i) {
                                                                 return (
                                                                     <Panel header={item.name} key={i}>
-
                                                                         <center>
 
                                                                             {item.still_path == "" || item.still_path == undefined ?
                                                                                 
                                                                                 <img alt="example" width="100" height="120" src={`/images/no_image_available.jpeg`} />
                                                                                 :
-                                                                                <img alt="example" width="100" height="120" src={`https://image.tmdb.org/t/p/w220_and_h330_face/${item.still_path}`} />
+                                                                                <img alt="example" width="100" height="120" src={`https://image.tmdb.org/t/p/w220_and_h330_face/${item.still_path.replace("/","")}`} />
                                                                             
                                                                             }
 
                                                                         </center>
+                                                                        <br></br>
+                                                                        <p>{props.season.detail.data === undefined ? "" : <p><li><b>Media de votos: </b>  <Rate disabled defaultValue={(props.season.detail.data.vote_average)} count={parseFloat(10.0)} /> </li></p> }
+                                                                        {props.season.detail.data === undefined ? "" : <li> <b>Total de votos:</b> {props.season.detail.data.vote_count}</li>}
+                                                                        </p>
 
+                                                                        <p>{props.season.detail.data === undefined ? "" : props.season.detail.data.overview}</p>
                                                                         <li><b>Fecha de lanzamiento: </b>{item.air_date}</li>
                                                                         <li><b>Nombre: </b>{item.name}</li>
                                                                         <li><b>Tripulación: </b>{item.crew.map(function (item, id) {

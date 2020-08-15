@@ -23,10 +23,10 @@ class LandingComponent extends React.Component {
     updatePagination(this.props.movies.page + 1);
 
     let filtering = this.props.movies.filter;
-    if (filtering === "" || filtering === undefined) {
+    if (filtering == "" || filtering == undefined)
       getListMovies(this.props.movies.page);
-    } else
-      findByName(filtering, this.props.movies.page);
+    else
+      findByName(filtering, this.props.movies.page, this.props.movies.type_filtering);
 
   }
 

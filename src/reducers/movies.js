@@ -5,6 +5,7 @@ const defaultState = {
     list: [],
     isLoading: true,
     filter: '',
+    type_filtering: 'movie',
     page: 1,
 }
 
@@ -18,13 +19,13 @@ const reducer = (state = defaultState, action) => {
 
         case FILTER_MOVIES_SUCCESS:{
             let list = [];
-            if(state.page === 1){
+            if(state.page == 1){
                 list = action.payload.data.results;
             }else{
                 list = state.list.concat(action.payload.data.results)
             }
            
-            return {...state, isLoading: false, results:action.payload, list, filter:action.filter}
+            return {...state, isLoading: false, results:action.payload, list, type_filtering:action.type_filtering , filter:action.filter}
         }
 
         case MOVIES_SUCCESS:{

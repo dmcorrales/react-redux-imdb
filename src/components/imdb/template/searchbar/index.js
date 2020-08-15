@@ -5,7 +5,6 @@ import findByName from '../../../../actions/filteringMovies';
 import updatePagination from '../../../../actions/updatePagination';
 import { Drawer, Button } from 'antd';
 
-
 class SearchComponent extends React.Component {
 
     state = { visible: false };

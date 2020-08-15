@@ -23,6 +23,11 @@ class MovieService {
         return axios.get(`${config.HOST_URL}/${config.API_VERSION}/${this.path}?api_key=${config.API_KEY}&language=es-ES`);
     }
 
+    static getSeasonEpisodesById(tv_id,season_number,episode_number) {
+        this.path = `tv/${tv_id}/season/${season_number}/episode/${episode_number}`; 
+        return axios.get(`${config.HOST_URL}/${config.API_VERSION}/${this.path}?api_key=${config.API_KEY}&language=es-ES`);
+    }
+
 }
 
 export default MovieService;

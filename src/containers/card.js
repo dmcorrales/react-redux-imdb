@@ -14,9 +14,9 @@ function CardComponent(props) {
                 cover={
 
                     <>
-                        {data.poster_path === " " || data.poster_path === undefined
+                        {data.poster_path == " " || data.poster_path == undefined
                             ?
-                            <img alt="example" className="image_card" src={`/images/no_image_available.jpeg`} />
+                            <img alt="example"  width="238" height="357" className="image_card" src={`/images/no_image_available.jpeg`} />
                             :
                             <img alt="example" src={`https://image.tmdb.org/t/p/w220_and_h330_face/${data.poster_path}`} className="image_card" />
                         }

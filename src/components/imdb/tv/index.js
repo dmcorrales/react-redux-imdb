@@ -3,6 +3,7 @@ import Tv from './tv';
 import { connect } from 'react-redux';
 import findById from '../../../actions/findMovieById';
 import getSeasons from '../../../actions/getSeasons';
+import getSeasonEpisodes from '../../../actions/getSeasonEpisodes';
 
 import { Skeleton } from 'antd';
 
@@ -29,11 +30,11 @@ class TvComponent extends React.Component {
 
     render() {
 
-        const { movies, season, getSeasons } = this.props;
+        const { movies, season, getSeasons, getSeasonEpisodes } = this.props;
         const { mode } = this.state;
         return (
             <>
-                {movies.isLoading ? <Skeleton /> : <Tv mode={mode} handleModeChange={this.handleModeChange} season={season} getSeasons={getSeasons} movie={movies.results.data}></Tv>}
+                {movies.isLoading ? <Skeleton /> : <Tv mode={mode} handleModeChange={this.handleModeChange} season={season} getSeasonEpisodes={getSeasonEpisodes} getSeasons={getSeasons} movie={movies.results.data}></Tv>}
             </>
         );
     }
@@ -46,7 +47,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     findById,
-    getSeasons
+    getSeasons,
+    getSeasonEpisodes
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TvComponent);
