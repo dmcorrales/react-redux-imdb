@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageHeader, Button, Descriptions } from 'antd';
+import { PageHeader } from 'antd';
 import { Card, Col, Row, Statistic, Tag } from 'antd';
 import { createBrowserHistory } from 'history';
 const history = createBrowserHistory({ forceRefresh: true });
@@ -11,13 +11,12 @@ function Movie(props) {
         <div className="site-page-header-ghost-wrapper">
             <PageHeader
                 ghost={false}
-                onBack={() => history.push("/")}
+                onBack={() => window.location.href = ("/")}
                 title="Volver"
                 subTitle={""}
-                extra={[
-
+                extra={
                     <Row gutter={16}>
-                        <Col span={8}>
+                        <Col key="2" span={8}>
                             <Statistic title="Likes" value={movie.popularity} />
                         </Col>
 
@@ -28,18 +27,20 @@ function Movie(props) {
                             <Statistic title="Votos" value={movie.vote_average} suffix="" />
                         </Col>
                     </Row>
-
-                    ,
-                ]}
+                }
             >
                 <div className="site-card-wrapper">
                     <Row gutter={16}>
                         <Col span={8}>
                             <Card title={movie.original_title + " (" + movie.release_date + ")"} bordered={false}>
-                                <img alt="example" width="260" height="350" src={`https://image.tmdb.org/t/p/w220_and_h330_face/${movie.poster_path}`} />
+                                {movie.poster_path == " " || movie.poster_path == undefined ?
+                                    <img alt="example" width="260" height="350" src={`/images/no_image_available.jpeg`} />
+                                    :
+                                    <img alt="example" width="260" height="350" src={`https://image.tmdb.org/t/p/w220_and_h330_face/${movie.poster_path}`} />
+                                }
                                 <br /><br />
                                 {movie.genres.map(function (item, i) {
-                                    return <Tag>{item.name}</Tag>;
+                                    return <Tag key={i}>{item.name}</Tag>;
                                 })}
 
                             </Card>
@@ -55,7 +56,7 @@ function Movie(props) {
                         <Col span={24}>
                             <Card title="Compañías de producción" bordered={false}>
                                 {movie.production_companies.map(function (item, i) {
-                                    return <li>{item.name}</li>;
+                                    return <li key={i}>{item.name}</li>;
                                 })}
                             </Card>
                         </Col>
@@ -65,7 +66,7 @@ function Movie(props) {
                         <Col span={24}>
                             <Card title="Países de producción" bordered={false}>
                                 {movie.production_countries.map(function (item, i) {
-                                    return <li>{item.name}</li>;
+                                    return <li key={i}>{item.name}</li>;
                                 })}
                             </Card>
                         </Col>

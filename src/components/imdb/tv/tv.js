@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageHeader, Tabs, Radio, Card, Col, Row, Statistic, Tag, Collapse } from 'antd';
-import {createBrowserHistory } from 'history';
+import { createBrowserHistory } from 'history';
 const { TabPane } = Tabs;
 const { Panel } = Collapse;
 
@@ -8,13 +8,13 @@ const history = createBrowserHistory({ forceRefresh: true });
 
 function Tv(props) {
     const { movie, season } = props;
-
+    
     return (
 
         <div className="site-page-header-ghost-wrapper">
             <PageHeader
                 ghost={false}
-                onBack={() => history.push("/")}
+                onBack={() => window.location.href = ("/")}
                 title="Volver"
                 subTitle={""}
                 extra={[
@@ -39,7 +39,11 @@ function Tv(props) {
                     <Row gutter={16}>
                         <Col span={8}>
                             <Card title={movie.original_name + " (" + movie.first_air_date + ")"} bordered={false}>
-                                <img alt="example" width="260" height="350" src={`https://image.tmdb.org/t/p/w220_and_h330_face/${movie.poster_path}`} />
+                                {movie.poster_path == " " || movie.poster_path == undefined ?
+                                    <img alt="example" width="260" height="350" src={`/images/no_image_available.jpeg`} />
+                                    : 
+                                    <img alt="example" width="260" height="350" src={`https://image.tmdb.org/t/p/w220_and_h330_face/${movie.poster_path}`} />
+                                }
                                 <br /><br />
                                 <li><b>Estado: </b>{movie.status}</li>
                                 <li><b>Tipo: </b>{movie.type}</li>
@@ -60,7 +64,7 @@ function Tv(props) {
                                         <Radio.Button value="top">Horizontal</Radio.Button>
                                         <Radio.Button value="left">Vertical</Radio.Button>
                                     </Radio.Group>
-                                    <Tabs onTabClick={(e) => props.getSeasons(movie.id, parseInt(e) + 1)}  defaultActiveKey="0" tabPosition={props.mode}>
+                                    <Tabs onTabClick={(e) => props.getSeasons(movie.id, parseInt(e) + 1)} defaultActiveKey="0" tabPosition={props.mode}>
                                         {movie.seasons.map(function (item, i) {
                                             return (
                                                 <TabPane tab={`${item.name}`} key={i}>
@@ -73,7 +77,15 @@ function Tv(props) {
                                                                     <Panel header={item.name} key={i}>
 
                                                                         <center>
-                                                                            <img alt="example" width="100" height="120" src={`https://image.tmdb.org/t/p/w220_and_h330_face/${item.still_path}`} />
+
+                                                                            {item.still_path == "" || item.still_path == undefined ?
+                                                                                
+                                                                                <img alt="example" width="100" height="120" src={`/images/no_image_available.jpeg`} />
+                                                                                :
+                                                                                <img alt="example" width="100" height="120" src={`https://image.tmdb.org/t/p/w220_and_h330_face/${item.still_path}`} />
+                                                                            
+                                                                            }
+
                                                                         </center>
 
                                                                         <li><b>Fecha de lanzamiento: </b>{item.air_date}</li>
@@ -109,8 +121,12 @@ function Tv(props) {
                     <Row gutter={16}>
                         <Col span={24}>
                             <Card title="Último episodio en producción" bordered={false}>
+                                {movie.last_episode_to_air.still_path == "" || movie.last_episode_to_air.still_path == undefined ?
+                                    <img alt="example" width="100" height="120" src={`/images/no_image_available.jpeg`} />
+                                      : 
+                                    <img alt="example" width="100" height="120" src={`https://image.tmdb.org/t/p/w220_and_h330_face/${movie.last_episode_to_air.still_path}`} />
 
-                                <img alt="example" width="100" height="120" src={`https://image.tmdb.org/t/p/w220_and_h330_face/${movie.last_episode_to_air.still_path}`} />
+                                }
 
                                 <li><b>Nombre:</b> {movie.last_episode_to_air.name}</li>
                                 <li><b>Temporada:</b> {movie.last_episode_to_air.season_number}</li>

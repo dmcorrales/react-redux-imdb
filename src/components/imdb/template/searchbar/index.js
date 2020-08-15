@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import SearchBar from './searchbar';
 import findByName from '../../../../actions/filteringMovies';
 import updatePagination from '../../../../actions/updatePagination';
-import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker } from 'antd';
-import { useLocation } from 'react-router-dom'
+import { Drawer, Button } from 'antd';
 
 
 class SearchComponent extends React.Component {
@@ -33,7 +32,7 @@ class SearchComponent extends React.Component {
     render() {
         return (
             <>
-                {this.props.path == "/" ?
+                {this.props.path === "/" ?
                     <Button type="primary" onClick={this.showDrawer}>
                         FILTRAR
                 </Button>

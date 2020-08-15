@@ -1,6 +1,6 @@
 import React from 'react'
 import { Skeleton } from 'antd';
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 import Landing from './landing';
 import getListMovies from '../../../actions/getListMovies';
 import findByName from '../../../actions/filteringMovies';
@@ -9,32 +9,40 @@ import updatePagination from '../../../actions/updatePagination';
 
 class LandingComponent extends React.Component {
 
-  constructor(props){
-    super(props);
+  componentDidMount() {
+    this.loadTrendingMovies();
   }
 
-  componentDidMount() {
+  loadTrendingMovies() {
     const { getListMovies } = this.props;
     getListMovies();
   }
 
-  loadMoreMovies(){
-    const { getListMovies,updatePagination,findByName } = this.props;
-    updatePagination(this.props.movies.page+1);
+  loadMoreMovies() {
+    const { getListMovies, updatePagination, findByName } = this.props;
+    updatePagination(this.props.movies.page + 1);
 
     let filtering = this.props.movies.filter;
-    if(filtering == "" || filtering == undefined){
+    if (filtering === "" || filtering === undefined) {
       getListMovies(this.props.movies.page);
-    }else
-      findByName(filtering,this.props.movies.page);
+    } else
+      findByName(filtering, this.props.movies.page);
 
   }
 
   render() {
     const { movies } = this.props;
+
+    let trendingMoviesRender;
+    if (!movies.isLoading && (movies.list === [] || movies.list === undefined)) {
+      window.location.reload();
+    } else {
+      trendingMoviesRender = <Landing next={() => this.loadMoreMovies()} movies={movies.list}></Landing>;
+    }
+
     return (
       <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
-          {movies.isLoading ? <Skeleton /> : <Landing next={() => this.loadMoreMovies()} movies={movies.list}></Landing>}
+        {movies.isLoading ? <Skeleton /> : trendingMoviesRender}
       </div>
     );
   }

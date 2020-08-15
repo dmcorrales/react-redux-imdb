@@ -28,7 +28,7 @@ function ImdbComponent(props){
                  <Route exact path="/tv/:id" component={TvComponent} />
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Hecho con ❤️ por Daniel Corrales - danieldmc123@hotmail.com</Footer>
+          <Footer style={{ textAlign: 'center' }}>Hecho con <span aria-label="heart-icon" role="img">❤️</span> por Daniel Corrales - danieldmc123@hotmail.com</Footer>
         </Layout>
     );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { TextField, SelectField } from 'redux-form-antd';
-import { Input, Form, Button } from 'antd';
+import { SelectField } from 'redux-form-antd';
+import { Input, Button } from 'antd';
 
 const validate = values => {
     const errors = {}
@@ -10,7 +10,7 @@ const validate = values => {
     } 
     if (!values.filter) {
       errors.filter = 'Required'
-    } else if (/[.*+?^${}()|$#[\]\\]/g.test(values.filter)) {
+    } else if (/[.*+?^${}()|@"¡!%&/='?¨_$#<>[\]\\]/g.test(values.filter)) {
       errors.filter = 'Nombre inválido. No se aceptan caracteres extraños'
     }
     return errors
@@ -34,7 +34,7 @@ const renderField = ({
     </div>
   )
 
-    const { handleSubmit, pristine, reset, submitting } = props;
+    const { handleSubmit, submitting } = props;
     return (
         <form onSubmit={handleSubmit}>
             <label>

@@ -18,7 +18,7 @@ const reducer = (state = defaultState, action) => {
 
         case FILTER_MOVIES_SUCCESS:{
             let list = [];
-            if(state.page == 1){
+            if(state.page === 1){
                 list = action.payload.data.results;
             }else{
                 list = state.list.concat(action.payload.data.results)

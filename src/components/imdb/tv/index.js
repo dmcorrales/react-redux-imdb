@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Tv from './tv';
 import { connect } from 'react-redux';
 import findById from '../../../actions/findMovieById';
@@ -24,7 +24,7 @@ class TvComponent extends React.Component {
     componentDidMount() {
         const { findById, getSeasons } = this.props;
         findById(this.props.match.params.id, 'tv');
-        getSeasons(this.props.match.params.id, 0)
+        getSeasons(this.props.match.params.id, 1)
     }
 
     render() {
