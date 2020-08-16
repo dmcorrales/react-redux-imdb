@@ -17,7 +17,7 @@ function Landing(props) {
                 dataSource={props.movies}
                 renderItem={item => (
                     <List.Item>
-                        <CardComponent data={item}></CardComponent>
+                        <CardComponent getListCredits={props.getListCredits} type_filtering={props.type_filtering} credits={props.credits}  data={item}></CardComponent>
                     </List.Item>
                 )}
             />

@@ -1,10 +1,11 @@
-import {MOVIES_SUCCESS, PAGINATION_NUMBER,FILTER_MOVIES_SUCCESS} from '../_helpers/action.consts';
+import {MOVIES_SUCCESS, PAGINATION_NUMBER,FILTER_MOVIES_SUCCESS, LIST_CREDITS_SUCCESS} from '../_helpers/action.consts';
 
 const defaultState = {
     results: '',
     list: [],
     isLoading: true,
     filter: '',
+    credits: [],
     type_filtering: 'movie',
     page: 1,
 }
@@ -12,6 +13,10 @@ const defaultState = {
 const reducer = (state = defaultState, action) => {
     
     switch(action.type){
+
+        case LIST_CREDITS_SUCCESS:{
+            return {...state, credits:action.payload}      
+        }
 
         case PAGINATION_NUMBER:{
             return {...state, page:action.page}

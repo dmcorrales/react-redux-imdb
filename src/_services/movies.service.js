@@ -1,10 +1,10 @@
 import axios from 'axios';
 import * as config from '../config';
-//https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc?api_key=b2907782d07859a652052d3bae537475
+
 class MovieService {
 
     static getAll(page) {
-        this.path = 'trending/movies/day'; //Default's query by popularity
+        this.path = 'trending/movie/day'; //Default's query by popularity
         return axios.get(`${config.HOST_URL}/${config.API_VERSION}/${this.path}?page=${page}&api_key=${config.API_KEY}`);
     }
 
@@ -26,6 +26,11 @@ class MovieService {
     static getSeasonEpisodesById(tv_id,season_number,episode_number) {
         this.path = `tv/${tv_id}/season/${season_number}/episode/${episode_number}`; 
         return axios.get(`${config.HOST_URL}/${config.API_VERSION}/${this.path}?api_key=${config.API_KEY}&language=es-ES`);
+    }
+
+    static getListCredits(tv_id, type) {
+        this.path = `${type}/${tv_id}/credits`; 
+            return axios.get(`${config.HOST_URL}/${config.API_VERSION}/${this.path}?api_key=${config.API_KEY}&language=es-ES`);
     }
 
 }

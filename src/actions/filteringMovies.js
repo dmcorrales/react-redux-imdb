@@ -3,7 +3,6 @@ import { FILTER_MOVIES_SUCCESS, MOVIES_ERROR } from '../_helpers/action.consts';
 
 const findByName = (filter, page = 1, type = 'movie') => {
     return dispatch => {
-        console.log(type)
         MovieService.findByName(filter, page, type).then(response => {
             dispatch({ payload: response, type: FILTER_MOVIES_SUCCESS, filter, type_filtering: type });
         }).catch(err =>

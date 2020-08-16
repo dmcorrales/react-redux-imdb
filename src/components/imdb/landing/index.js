@@ -3,6 +3,7 @@ import { Skeleton } from 'antd';
 import { connect } from 'react-redux';
 import Landing from './landing';
 import getListMovies from '../../../actions/getListMovies';
+import getListCredits from '../../../actions/getListCredits';
 import findByName from '../../../actions/filteringMovies';
 import updatePagination from '../../../actions/updatePagination';
 
@@ -31,13 +32,13 @@ class LandingComponent extends React.Component {
   }
 
   render() {
-    const { movies } = this.props;
+    const { movies, getListCredits} = this.props;
 
     let trendingMoviesRender;
     if (!movies.isLoading && (movies.list === [] || movies.list === undefined)) {
       window.location.reload();
     } else {
-      trendingMoviesRender = <Landing next={() => this.loadMoreMovies()} movies={movies.list}></Landing>;
+      trendingMoviesRender = <Landing next={() => this.loadMoreMovies()}  getListCredits={getListCredits} type_filtering={movies.type_filtering} credits={movies.credits}  movies={movies.list}></Landing>;
     }
 
     return (
@@ -55,7 +56,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getListMovies,
   findByName,
-  updatePagination
+  updatePagination,
+  getListCredits
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingComponent);
