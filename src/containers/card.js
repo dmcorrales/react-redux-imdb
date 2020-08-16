@@ -22,7 +22,7 @@ function CardComponent(props) {
                         }
                         <div className="overlay_card">
                             <div className="text_card">
-                                <b>Puntuación:</b> {data.vote_average} <Rate disabled defaultValue={(data.vote_average)} count={parseFloat(10.0)} />
+                                <b>Puntuación:</b> <Rate disabled defaultValue={parseInt(data.vote_average)} count={parseFloat(10.0)} />
                                 <b>Actores:</b> <div style={{ fontSize: 10 }}>Alvaro Antonio Stagg, Daniel Mauricio Corrales, Pedro Feijóo  </div>
                             </div>
                         </div>
